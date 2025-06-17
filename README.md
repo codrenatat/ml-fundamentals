@@ -20,8 +20,7 @@ Este proyecto implementa un servidor utilizando el **Model Context Protocol (MCP
 pip install -r requirements.txt
 
 ## Configuración del entorno
-1. **Crea un archivo .env en la raíz del proyecto usando .env.example como plantilla:**
-   cp .env.example .env
+1. **Crea un archivo .env en la raíz del proyecto**
 2. **Crea un entorno virtual y activalo**
    ALPHA_VANTAGE_API_KEY=tu_api_key_aqui
 
