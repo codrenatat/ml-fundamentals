@@ -2,16 +2,16 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Cargar variables de entorno
+# Load environment variables
 load_dotenv()
 
 def get_current_price(symbol: str) -> str:
     """
-    Obtiene el precio actual de una acción desde Alpha Vantage API.
+    Gets the current price of a stock from Alpha Vantage API.
     """
     apikey = os.getenv("ALPHA_VANTAGE_API_KEY")
     if not apikey:
-        return "Error: ALPHA_VANTAGE_API_KEY no configurada"
+        return "Error: ALPHA_VANTAGE_API_KEY not configured"
     
     url = (
         "https://www.alphavantage.co/query"
@@ -23,25 +23,25 @@ def get_current_price(symbol: str) -> str:
         response.raise_for_status()
         data = response.json()
         
-        # Verificar si hay error en la respuesta
+        # Check if there's an error in the response
         if "Error Message" in data:
-            return f"Error: Símbolo {symbol} no válido"
+            return f"Error: Symbol {symbol} is not valid"
         
         if "Note" in data:
-            return "Error: Límite de API alcanzado. Intenta más tarde."
+            return "Error: API limit reached. Try again later."
         
         if "Time Series (5min)" not in data:
-            return f"Error: No se pudieron obtener datos para {symbol}"
+            return f"Error: Could not get data for {symbol}"
         
-        # Obtener precio más reciente
+        # Get most recent price
         time_series = data["Time Series (5min)"]
         latest_time = sorted(time_series.keys())[-1]
         latest_data = time_series[latest_time]
         latest_price = latest_data["4. close"]
         
-        return f"💰 {symbol}: ${latest_price} (actualizado: {latest_time})"
+        return f"{symbol}: ${latest_price} (updated: {latest_time})"
         
     except requests.RequestException as e:
-        return f"Error de conexión: {str(e)}"
+        return f"Connection error: {str(e)}"
     except Exception as e:
-        return f"Error procesando datos: {str(e)}"
+        return f"Data processing error: {str(e)}"
