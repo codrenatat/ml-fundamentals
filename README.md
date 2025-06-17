@@ -4,7 +4,7 @@ Este proyecto implementa un servidor utilizando el **Model Context Protocol (MCP
 
 ---
 
-## ⚙️ Requisitos
+## Requisitos
 
 - Python 3.8 o superior
 - Cuenta gratuita en [Alpha Vantage](https://www.alphavantage.co/support/#api-key) para obtener una API Key
