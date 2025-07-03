@@ -1,5 +1,4 @@
-# Machine Learning Fundamentals
-
+# ml-fundamentals
 Este proyecto implementa un servidor utilizando el **Model Context Protocol (MCP)** en Python, que expone una herramienta para obtener el precio actual de acciones bursátiles a través de la API de [Alpha Vantage](https://www.alphavantage.co/). Está diseñado para integraciones con modelos LLM que soportan MCP.
 
 ---
@@ -23,5 +22,3 @@ pip install -r requirements.txt
 1. **Crea un archivo .env en la raíz del proyecto**
 2. **Crea un entorno virtual y activalo**
    ALPHA_VANTAGE_API_KEY=tu_api_key_aqui
-
-
